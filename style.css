@@ -1,0 +1,173 @@
+/* ==========================================================================
+   1. Global Resets & Layout Tokens
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Macro Layout System - CSS Grid Mobile First (Single Column Default) */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. Component Styling
+   ========================================================================== */
+
+/* --- Header --- */
+.app-header {
+    background-color: #1e293b;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.app-header .logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.main-nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.main-nav a:hover {
+    color: white;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    background-color: #e2e8f0;
+    padding: 25px 20px;
+}
+
+.sidebar h3 {
+    font-size: 14px;
+    color: #475569;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 12px;
+}
+
+.sidebar ul li a {
+    color: #334155;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #007bff;
+}
+
+/* --- Main Content --- */
+.main-content {
+    padding: 30px 20px;
+}
+
+.content-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.content-card h2 {
+    color: #1e293b;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+.content-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* --- Footer --- */
+.app-footer {
+    background-color: #1e293b;
+    color: #94a3b8;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.85rem;
+}
+
+.menu-btn{
+    background: #334155;
+    color: white;
+    border: none;
+    padding:8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.sidebar{
+    background-color: #e2e8f0;
+    padding: 25px 20px;
+    display: none;
+}
+.sidebar.active{
+    display: block;
+}
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-columns: 260px 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "header header"
+            "sidebar main"
+            "footer footer";
+            .menu-btn{
+                display: none;
+            }
+            .sidebar{display: block;}
+    }
+
+    /* Assigning components to Grid Areas explicitly */
+    .app-header { grid-area: header; }
+    .sidebar { grid-area: sidebar; min-height: calc(100vh - 110px); }
+    .main-content { grid-area: main; }
+    .app-footer { grid-area: footer; }
+}
